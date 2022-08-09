@@ -11,14 +11,14 @@ router.post("/", jwtMiddleware, async (req, res) => {
   if (!req.user.isAdmin) {
     return res.status(403).send("unauthorized");
   }
-  
+
   const subarea = new Subarea(req.body);
   await subarea.save();
   res.send(subarea);
 });
 
-router.get("/:subareaName", async (req, res) => {
-  const subarea = await Subarea.findOne({ name: req.params.subareaName }).populate("monsters");
+router.get("/:id", async (req, res) => {
+  const subarea = await Subarea.findOne({ _id: req.params.id }).populate("monsters");
   if (!subarea) {
     res.sendStatus(404);
   } else {
@@ -26,8 +26,8 @@ router.get("/:subareaName", async (req, res) => {
   }
 });
 
-router.patch("/:name", jwtMiddleware, async (req, res) => {
-  const subarea = await Subarea.findOne({ name: req.params.name });
+router.patch("/:id", jwtMiddleware, async (req, res) => {
+  const subarea = await Subarea.findOne({ _id: req.params.id });
   if (!subarea) {
     return res.sendStatus(404);
   }
@@ -44,8 +44,8 @@ router.patch("/:name", jwtMiddleware, async (req, res) => {
   res.send(subarea);
 });
 
-router.delete("/:name", jwtMiddleware, async (req, res) => {
-  const subarea = await Subarea.findOne({ name: req.params.name });
+router.delete("/:id", jwtMiddleware, async (req, res) => {
+  const subarea = await Subarea.findOne({ _id: req.params.id });
 
   if (!subarea) {
     return res.sendStatus(404);

@@ -13,21 +13,10 @@ const subareaSchema = Schema(
       type: ObjectId,
       ref: "area"
     },
-    north: {
-      type: ObjectId,
-      ref: "north"
-    },
-    east: {
-      type: ObjectId,
-      ref: "east"
-    },
-    south: {
-      type: ObjectId,
-      ref: "south"
-    },
-    west: {
-      type: ObjectId,
-      ref: "west"
+    exits: {
+      type: Array,
+      default: [],
+      ref: "exits"
     },
     public: {
       type: Boolean,
