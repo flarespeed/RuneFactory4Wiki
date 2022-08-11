@@ -3,7 +3,7 @@ import { useState, useGlobal, useEffect } from "reactn"
 import { useNavigate } from "react-router-dom";
 
 
-const MapBuilder = () => {
+const MonsterComp = () => {
 
   const [monster, setMonster] = useState([])
   const [area, setArea] = useState([])
@@ -25,7 +25,7 @@ const MapBuilder = () => {
 
   const toArea = (newId) => {
     setId(newId);
-    useNavigate("/area")
+    window.location.href = "/area"
   }
 
   return (
@@ -33,8 +33,8 @@ const MapBuilder = () => {
       <h3>{monster.name}</h3>
       <p>found in: <a onClick={() => toArea(area._id)}>{area.name}</a></p>
 
-      // <ul>
-      // {areas.map(area => <li onClick={() => toArea(area._id)}>{area.name}</li>)}
-      // </ul>
     </>
   )
+}
+
+export default MonsterComp

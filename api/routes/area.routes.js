@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const Area = require("../models/Area");
-const Subarea = require("../models/Subarea.model");
-const User = require("../models/User.model");
+const Subarea = require("../models/Subarea");
+const User = require("../models/User");
 const jwtMiddleware = require("../helpers/jwt-middleware");
 
 const router = Router();
