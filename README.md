@@ -12,4 +12,14 @@ an attempt at a wiki for Rune Factory 4 that actually links items to where they 
   - list items dropped by monster
 - description of each item
 
-uses react, mongodb, express.
+### models:
+- Area
+  - provides names for each map section
+- Subarea
+  - has connections to other subareas, and belongs in a specific Area group
+  - has a list of monsters found in the subarea
+- Monster
+  - has connections to all subareas it can be found in
+  - has list of items it drops
+
+uses react, mongodb, express, concurrently.
