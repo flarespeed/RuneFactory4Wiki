@@ -42,7 +42,7 @@ const AreaView = () => {
       </ul>
       <h3>Monsters:</h3>
       <ul>
-        {area.monsters.map(monster => <li onClick={() => useMonsterNavigate(monster._id)}>{area.name}</li>)}
+        {area.monsters.map(monster => <li><Link to={`monster/${monster._id}`}>{monster.name}</Link></li>)}
       </ul>
     </>
   )

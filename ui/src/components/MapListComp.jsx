@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useGlobal, useEffect } from "reactn"
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 const MapBuilder = () => {
@@ -11,8 +11,7 @@ const MapBuilder = () => {
 
 
   useEffect(() => {
-    const { areaName } = useParams()
-    axios.get(`http://localhost:1337/area/${ areaName }`)
+    axios.get("http://localhost:1337/area/")
       .then(res => setAreas(res.data))
   })
 

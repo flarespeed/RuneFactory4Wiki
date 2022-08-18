@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useState, useGlobal, useEffect } from "reactn"
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 const MonsterComp = () => {
 
@@ -9,29 +8,22 @@ const MonsterComp = () => {
   const [area, setArea] = useState([])
   const [token, setToken] = useGlobal("token")
   const [user, setUser] = useGlobal("user")
-  const [id, setId] = useGlobal("id")
 
 
   useEffect(() => {
-    if (id) {
-      axios.get("http://localhost:1337/monster/"+id)
-      .then(res => setMonster(res.data))
-      axios.get("http://localhost:1337/subarea/"+monster.area)
+    const { id } = useParams()
+    axios.get(`http://localhost:1337/monster/${ id }`)
+    .then(
+      res => setMonster(res.data)
+      axios.get(`http://localhost:1337/subarea/${monster.area}`)
       .then(res => setArea(res.data))
-    } else {
-      useNavigate("/")
-    }
+    )
   })
-
-  const toArea = (newId) => {
-    setId(newId);
-    window.location.href = "/area"
-  }
 
   return (
     <>
       <h3>{monster.name}</h3>
-      <p>found in: <a onClick={() => toArea(area._id)}>{area.name}</a></p>
+      <p>found in: <Link to={`/area/${area._id}`}>{area.name}</a></p>
 
     </>
   )

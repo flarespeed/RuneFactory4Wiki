@@ -1,5 +1,5 @@
 import { setGlobal, addCallback } from "reactn"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Switch } from "react-router-dom"
 import Signup from "./pages/Signup";
 import Login from "./pages/Login"
 import Map from "./pages/Map"
@@ -29,12 +29,20 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Map />} />
+        <Switch>
+        <Route path="/" />
+          <Switch>
+            <Route path=":areaName" element={<Map />} />
+            <Route path="" element={<MapList />} />
+          </Switch>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/area" element={<Area />} />
-        <Route path="/monster" element={<Monster />} />
+        <Route path="/area/" />
+          <Route path=":id" element={<Area />} />
+        <Route path="/monster/" />
+          <Route path=":id" element={<Monster />} />
         <Route path="*" />
+        </Switch>
       </Routes>
     </Router>
   );
