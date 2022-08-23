@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;
 
-const subareaSchema = Schema({
+const monsterSchema = Schema({
   name: {
     type: String,
     required: true,
@@ -18,5 +18,5 @@ const subareaSchema = Schema({
   }
 });
 
-const Subarea = mongoose.model("Subarea", subareaSchema);
-module.exports = Subarea;
+const Monster = mongoose.model("Monster", monsterSchema);
+module.exports = Monster;

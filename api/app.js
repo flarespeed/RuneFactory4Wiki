@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 const areaRouter = require("./routes/area.routes");
 const subareaRouter = require("./routes/subarea.routes");
@@ -24,8 +24,10 @@ app.use("/subarea", subareaRouter);
 app.use("/monster", monsterRouter);
 app.use("/user", userRoutes);
 
+console.log(process.env.DB_URL + process.env.DB_NAME);
+
 mongoose
-  .connect(process.env.DB_URL + process.env.DB_COLLECTION)
+  .connect(process.env.DB_URL + process.env.DB_NAME)
   .then(() => {
     console.log("DB Connected");
     app.listen(process.env.PORT);

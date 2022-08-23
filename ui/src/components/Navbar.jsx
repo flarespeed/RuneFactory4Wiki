@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Link to="/">Rune Factory 4 map</Link>
+      <Link to="/">Rune Factory 4 area list</Link>
       <div>
         {!user && <>
           <Link to="/signup">Signup</Link>

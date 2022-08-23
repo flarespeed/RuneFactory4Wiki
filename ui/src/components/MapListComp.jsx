@@ -19,7 +19,7 @@ const MapBuilder = () => {
     <>
       <div>
         <ul>
-        {areas.map(area => <li onClick={() => toArea(area._id)}>{area.name}</li>)}
+        {areas.map(area => <li><Link to={`/area/${area.name}`}>{area.name}</Link></li>)}
         </ul>
       </div>
     </>

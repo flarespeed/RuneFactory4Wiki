@@ -8,27 +8,13 @@ const AreaView = () => {
   const [area, setArea] = useState([])
   const [token, setToken] = useGlobal("token")
   const [user, setUser] = useGlobal("user")
-  const [id, setId] = useGlobal("id")
 
 
   useEffect(() => {
-    if (id) {
-      axios.get("http://localhost:1337/subarea/"+id)
-      .then(res => setArea(res.data))
-    } else {
-      useNavigate("/")
-    }
+    const { id } = useParams()
+    axios.get(`http://localhost:1337/subarea/${id}`)
+    .then(res => setArea(res.data))
   })
-
-  const useAreaNavigate = (newId) => {
-    setId(newId);
-    useNavigate("/area")
-  }
-
-  const useMonsterNavigate = (newId) => {
-    setId(newId);
-    useNavigate("/monster")
-  }
 
   return (
     <>
