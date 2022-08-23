@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 
 const MonsterComp = () => {
 
+  const { id } = useParams()
   const [monster, setMonster] = useState([])
   const [area, setArea] = useState([])
   const [token, setToken] = useGlobal("token")
@@ -11,7 +12,6 @@ const MonsterComp = () => {
 
 
   useEffect(async () => {
-    const { id } = useParams()
     await axios.get(`http://localhost:1337/monster/${ id }`)
     .then(res => setMonster(res.data))
     axios.get(`http://localhost:1337/subarea/${monster.area}`)

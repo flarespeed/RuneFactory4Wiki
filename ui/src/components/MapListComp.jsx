@@ -11,7 +11,7 @@ const MapBuilder = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:1337/area/")
+    axios.get("http://localhost:1337/area/arealist")
       .then(res => setAreas(res.data))
   })
 

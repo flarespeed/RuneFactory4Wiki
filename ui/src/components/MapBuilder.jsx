@@ -8,10 +8,10 @@ const MapBuilder = () => {
   const [areas, setAreas] = useState([])
   const [token, setToken] = useGlobal("token")
   const [user, setUser] = useGlobal("user")
+  const { areaName } = useParams()
 
 
   useEffect(() => {
-    const { areaName } = useParams()
     axios.get(`http://localhost:1337/area/${ areaName }`)
       .then(res => setAreas(res.data))
   })
