@@ -26,8 +26,8 @@ router.get("/monsterlist", async (req, res) => {
   res.send(monster);
 });
 
-router.get("/:id", async (req, res) => {
-  const monster = await Monster.findOne({ _id: req.params.id });
+router.get("/:_id", async (req, res) => {
+  const monster = await Monster.findOne({ _id: req.params._id });
   if (!monster) {
     res.sendStatus(404);
   } else {
@@ -35,8 +35,8 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.patch("/:id", jwtMiddleware, async (req, res) => {
-  const monster = await Monster.findOne({ _id: req.params.id });
+router.patch("/:_id", jwtMiddleware, async (req, res) => {
+  const monster = await Monster.findOne({ _id: req.params._id });
   if (!monster) {
     return res.sendStatus(404);
   }
@@ -53,8 +53,8 @@ router.patch("/:id", jwtMiddleware, async (req, res) => {
   res.send(monster);
 });
 
-router.delete("/:id", jwtMiddleware, async (req, res) => {
-  const monster = await Monster.findOne({ _id: req.params.id });
+router.delete("/:_id", jwtMiddleware, async (req, res) => {
+  const monster = await Monster.findOne({ _id: req.params._id });
 
   if (!monster) {
     return res.sendStatus(404);

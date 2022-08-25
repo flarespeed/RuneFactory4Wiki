@@ -24,13 +24,11 @@ app.use("/subarea", subareaRouter);
 app.use("/monster", monsterRouter);
 app.use("/user", userRoutes);
 
-console.log(process.env.DB_URL + process.env.DB_NAME);
-
 mongoose
   .connect(process.env.DB_URL + process.env.DB_NAME)
   .then(() => {
     console.log("DB Connected");
-    app.listen(process.env.PORT);
+    app.listen(process.env.API_PORT);
   })
   .catch((err) => {
     console.log(err);

@@ -11,10 +11,11 @@ router.post("/", jwtMiddleware, async (req, res) => {
   if (!req.user.isAdmin) {
     return res.status(403).send("unauthorized");
   }
-  const { areaName } = req.body
-  const areaFound = await Area.findOne({ areaName });
-  if (areaFound || areaName.toLowerCase() == "arealist") {
-    return res.status(409).send({ errors: "areaName exists" });
+  let { name } = req.body
+  name = name.toLowerCase()
+  const areaFound = await Area.findOne({ name });
+  if (areaFound || name == "arealist") {
+    return res.status(409).send({ errors: "name exists" });
   }
   const area = new Area(req.body);
   await area.save();
@@ -26,8 +27,8 @@ router.get("/arealist", async (req, res) => {
   res.send(area);
 });
 
-router.get("/:areaName", async (req, res) => {
-  const area = await Area.findOne({ name: req.params.areaName }).populate("subareas");
+router.get("/:_id", async (req, res) => {
+  const area = await Area.findOne({ _id: req.params._id }).populate("subareas");
   if (!area) {
     res.sendStatus(404);
   } else {
@@ -35,8 +36,8 @@ router.get("/:areaName", async (req, res) => {
   }
 });
 
-router.patch("/:name", jwtMiddleware, async (req, res) => {
-  const area = await Area.findOne({ name: req.params.name });
+router.patch("/:_id", jwtMiddleware, async (req, res) => {
+  const area = await Area.findOne({ _id: req.params._id });
   if (!area) {
     return res.sendStatus(404);
   }
@@ -53,8 +54,8 @@ router.patch("/:name", jwtMiddleware, async (req, res) => {
   res.send(area);
 });
 
-router.delete("/:name", jwtMiddleware, async (req, res) => {
-  const area = await Area.findOne({ name: req.params.name });
+router.delete("/:_id", jwtMiddleware, async (req, res) => {
+  const area = await Area.findOne({ _id: req.params._id });
 
   if (!area) {
     return res.sendStatus(404);

@@ -16,7 +16,7 @@ const MonsterComp = () => {
     .then(res => setMonster(res.data))
     axios.get(`http://localhost:1337/subarea/${monster.area}`)
     .then(res => setArea(res.data))
-  })
+  }, [])
 
   return (
     <>

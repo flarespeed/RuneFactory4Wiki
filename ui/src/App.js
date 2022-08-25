@@ -31,15 +31,12 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" />
-          <Route path=":areaName" element={<Map />} />
-          <Route path="arealist" element={<MapList />} />
+        <Route path="/" element={<MapList />}/>
+        <Route path="/:areaName" element={<Map />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/area/" />
-          <Route path=":id" element={<Area />} />
-        <Route path="/monster/" />
-          <Route path=":id" element={<Monster />} />
+        <Route path="/area/:id" element={<Area />} />
+        <Route path="/monster/:id" element={<Monster />} />
         <Route path="*" />
       </Routes>
     </Router>

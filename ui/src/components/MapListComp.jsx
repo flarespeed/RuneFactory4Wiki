@@ -3,7 +3,7 @@ import { useState, useGlobal, useEffect } from "reactn"
 import { useNavigate, Link } from "react-router-dom";
 
 
-const MapBuilder = () => {
+const MapListComp = () => {
 
   const [areas, setAreas] = useState([])
   const [token, setToken] = useGlobal("token")
@@ -13,7 +13,7 @@ const MapBuilder = () => {
   useEffect(() => {
     axios.get("http://localhost:1337/area/arealist")
       .then(res => setAreas(res.data))
-  })
+  }, [])
 
   return (
     <>
@@ -26,4 +26,4 @@ const MapBuilder = () => {
   )
 }
 
-export default MapBuilder
+export default MapListComp

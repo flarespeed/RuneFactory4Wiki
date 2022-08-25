@@ -14,17 +14,14 @@ const AreaView = () => {
     const { id } = useParams()
     axios.get(`http://localhost:1337/subarea/${id}`)
     .then(res => setArea(res.data))
-  })
+  }, [])
 
   return (
     <>
       <h2>{area.name}</h2>
       <h3>Connections:</h3>
       <ul>
-        {area.north && <li onClick={() => useAreaNavigate(area._id)}>{area.north}</li>}
-        {area.east && <li onClick={() => useAreaNavigate(area._id)}>{area.east}</li>}
-        {area.south && <li onClick={() => useAreaNavigate(area._id)}>{area.south}</li>}
-        {area.west && <li onClick={() => useAreaNavigate(area._id)}>{area.west}</li>}
+        {area.monsters.map(monster => <li><Link to={`monster/${monster._id}`}>{monster.name}</Link></li>)}
       </ul>
       <h3>Monsters:</h3>
       <ul>
