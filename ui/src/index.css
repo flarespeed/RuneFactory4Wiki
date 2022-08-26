@@ -1,0 +1,17 @@
+nav{
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgrey;
+  width: auto;
+  padding: 5px;
+}
+body{
+  margin: 0px;
+  background-color: #ababab;
+}
+li{
+  border-radius: 3px;
+  background-color: lightgrey;
+  width: max-content;
+  padding: 5px;
+}

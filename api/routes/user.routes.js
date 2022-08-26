@@ -26,6 +26,7 @@ const sanitizeUser = (user) => ({
 
 // signup
 userRouter.post("/signup", [...signupValidator], async (req, res) => {
+  console.log(req);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).send({ errors: errors.array() });

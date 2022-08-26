@@ -9,16 +9,20 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Link to="/">Rune Factory 4 area list</Link>
-      <div>
-        {!user && <>
-          <Link to="/signup">Signup</Link>
-          <Link to="/login">Login</Link>
-        </>}
-        {user && <LogoutButton to="/">Logout</LogoutButton>}
+      <div className="navdiv">
+        <Link to="/">Rune Factory 4 area list</Link>
       </div>
+
     </nav>
   )
 }
 
 export default Navbar
+
+// <div className="navdiv">
+//   {!user && <>
+//     <Link to="/signup">Signup</Link>
+//     <Link to="/login">Login</Link>
+//   </>}
+//   {user && <LogoutButton to="/">Logout</LogoutButton>}
+// </div>
