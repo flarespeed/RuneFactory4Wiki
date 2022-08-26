@@ -13,14 +13,14 @@ const MapBuilder = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:1337/area/${ areaName }`)
-      .then(res => setAreas(res.data))
+      .then(res => setAreas(res.data.subareas))
   }, [])
 
   return (
     <>
       <div>
         <ul>
-        {areas.map(area => <li><Link to={`/area/${area._id}`}>{area.name}</Link></li>)}
+        {areas.map(area => <li><Link to={`/subarea/${area._id}`}>{area.name}</Link></li>)}
         </ul>
       </div>
     </>

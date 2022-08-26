@@ -21,7 +21,7 @@ const MonsterComp = () => {
   return (
     <>
       <h3>{monster.name}</h3>
-      <p>found in: <Link to={`/area/${area._id}`}>{area.name}</Link></p>
+      <p>found in: <Link to={`/subarea/${area._id}`}>{area.name}</Link></p>
 
     </>
   )

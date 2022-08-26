@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useGlobal, useEffect } from "reactn"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 
 const AreaView = () => {
@@ -8,24 +8,32 @@ const AreaView = () => {
   const [area, setArea] = useState([])
   const [token, setToken] = useGlobal("token")
   const [user, setUser] = useGlobal("user")
+  const [exits, setExits] = useState([])
+  const [monsters, setMonsters] = useState([])
+  const { id } = useParams()
 
+  const handleResp = (res) => {
+    setArea(res.data);
+    setExits(res.data.exits);
+    setMonsters(res.data.monsters);
+  };
 
   useEffect(() => {
-    const { id } = useParams()
     axios.get(`http://localhost:1337/subarea/${id}`)
-    .then(res => setArea(res.data))
-  }, [])
+    .then(res => handleResp(res))
+  }, []);
+
 
   return (
     <>
-      <h2>{area.name}</h2>
+      <h2><Link to={`/area/${area.area}`}>back to area</Link></h2>
       <h3>Connections:</h3>
       <ul>
-        {area.monsters.map(monster => <li><Link to={`monster/${monster._id}`}>{monster.name}</Link></li>)}
+        {exits.map(area => <li><Link to={`/subarea/${area._id}`}>{area.direction}: {area.name}</Link></li>)}
       </ul>
       <h3>Monsters:</h3>
       <ul>
-        {area.monsters.map(monster => <li><Link to={`monster/${monster._id}`}>{monster.name}</Link></li>)}
+        {monsters.map(monster => <li><Link to={`/monster/${monster._id}`}>{monster.name}</Link></li>)}
       </ul>
     </>
   )

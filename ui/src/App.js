@@ -32,10 +32,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<MapList />}/>
-        <Route path="/:areaName" element={<Map />} />
+        <Route path="/area/:areaName" element={<Map />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/area/:id" element={<Area />} />
+        <Route path="/subarea/:id" element={<Area />} />
         <Route path="/monster/:id" element={<Monster />} />
         <Route path="*" />
       </Routes>
