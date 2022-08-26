@@ -29,7 +29,7 @@ const AreaView = () => {
       <h2><Link to={`/area/${area.area}`}>back to area</Link></h2>
       <h3>Connections:</h3>
       <ul>
-        {exits.map(area => <li><Link to={`/subarea/${area._id}`}>{area.direction}: {area.name}</Link></li>)}
+        {exits.map(area => <li><Link to={`/subarea/${area.id}`}>{area.direction}: {area.name}</Link></li>)}
       </ul>
       <h3>Monsters:</h3>
       <ul>
