@@ -26,8 +26,8 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:1337/auth/signup", formState)
-      const { data } = await axios.post("http://localhost:1337/auth/login", {
+      await axios.post("http://localhost:1337/user/signup", formState)
+      const { data } = await axios.post("http://localhost:1337/user/login", {
         username: formState.username,
         password: formState.password
       })

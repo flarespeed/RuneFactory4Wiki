@@ -24,7 +24,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post("http://localhost:1337/auth/login", formState)
+      const { data } = await axios.post("http://localhost:1337/user/login", formState)
       setUser(data.user)
       setToken(data.token)
       setLoggedIn(true)
