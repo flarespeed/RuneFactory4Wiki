@@ -10,7 +10,7 @@ const AreaView = () => {
   const [user, setUser] = useGlobal("user")
   const [exits, setExits] = useState([])
   const [monsters, setMonsters] = useState([])
-  const { id } = useParams()
+  var { id } = useParams()
 
   const handleResp = (res) => {
     setArea(res.data);
@@ -21,7 +21,7 @@ const AreaView = () => {
   useEffect(() => {
     axios.get(`http://localhost:1337/subarea/${id}`)
     .then(res => handleResp(res))
-  }, []);
+  }, [id]);
 
 
   return (
