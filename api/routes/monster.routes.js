@@ -13,7 +13,7 @@ router.post("/", jwtMiddleware, async (req, res) => {
   }
   const { monsterName } = req.body
   const monsterFound = await Monster.findOne({ monsterName });
-  if (monsterFound || monsterName.toLowerCase() == "monsterlist") {
+  if (monsterFound || monsterName == "monsterlist") {
     return res.status(409).send({ errors: "monsterName exists" });
   }
   const monster = new Monster(req.body);
