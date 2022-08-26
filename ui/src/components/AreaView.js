@@ -33,7 +33,7 @@ const AreaView = () => {
       </ul>
       <h3>Monsters:</h3>
       <ul>
-        {monsters.map(monster => <li><Link to={`/monster/${monster._id}`}>{monster.name}</Link></li>)}
+        {monsters.map(monster => <li>{monster.name}</li>)}
       </ul>
     </>
   )
